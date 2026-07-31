@@ -25,16 +25,6 @@ enum Team: Equatable {
     }
 }
 
-extension Team {
-    var displayName: LocalizedStringKey {
-        switch self {
-        case .white:
-            return "White"
-        case .black:
-            return "Black"
-        }
-    }
-}
 
 extension Team: CustomStringConvertible {
     var description: String {
@@ -63,16 +53,6 @@ enum Player {
     case ai(ArtificialIntelligence)
 }
 
-extension Player: CustomStringConvertible {
-    var description: String {
-        switch self {
-        case .human:
-            return "human"
-        case .ai(let ai):
-            return "\(ai.name) player"
-        }
-    }
-}
 
 
 enum Rank: Int, CaseIterable {
@@ -116,59 +96,25 @@ enum PieceType: CaseIterable {
     }
 }
 
-extension PieceType {
-    var displayName: LocalizedStringKey {
-        switch self {
-        case .pawn:   return "Pawn"
-        case .knight: return "Knight"
-        case .bishop: return "Bishop"
-        case .rook:   return "Rook"
-        case .queen:  return "Queen"
-        case .king:   return "King"
-        }
-    }
-}
 
 
-protocol Piece: Identifiable {
+
+protocol Piece: Identifiable, AnyObject{
     var id: UUID { get }
     var team: Team { get }
+    var hasMoved: Bool {get set}
     
-    func canMove() -> Bool
-    func move()
-    func possibleMovements(board: Board) -> [Position]
+    func possibleMovements(from position: Position,board: Board) -> [Position]
+    func markAsMoved()
 }
 
-class Pawn : Piece {
-    var id: UUID
-    var team: Team
-    
-    init(team: Team) {
-        self.id = UUID()
-        self.team = team
-    }
-    
-    func canMove() -> Bool {
-        <#code#>
-    }
-    
-    func move() {
-        <#code#>
-    }
-    
-    func possibleMovements(board: Board) -> [Position] {
-        <#code#>
-    }
-    
-    
-}
 
 
 struct Move {
     let from: Position
     let to: Position
-    let piece: Piece
-    let capturedPiece: Piece?
+    let piece: any Piece
+    let capturedPiece: (any Piece)?
     var isCastling: Bool = false
     var isEnPassant: Bool = false
     var isPromotion: Bool = false
@@ -178,14 +124,14 @@ struct Move {
 
 
 struct Board {
-    var squares: [[Piece?]] = Array(
+    var squares: [[(any Piece)?]] = Array(
         repeating: Array(repeating: nil, count: 8),
         count: 8
     )
     
     var turn = Team.white
 
-    subscript(position: Position) -> Piece? {
+    subscript(position: Position) -> (any Piece)? {
         get {
             let index = position.arrayIndex
             return squares[index.row][index.col]
@@ -202,7 +148,7 @@ struct GameState {
     var board: Board = Board()
     var currentTurn: Team = .white
     var moveHistory: [Move] = []
-    var capturedPieces: [Piece] = []
+    var capturedPieces: [any Piece] = []
 
     var whiteCanCastleKingside: Bool = true
     var whiteCanCastleQueenside: Bool = true

@@ -6,8 +6,19 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXContainerItemProxy section */
+		1EF95C5F301F7D7600B43C2A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 1EF95C2B301A159E00B43C2A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 1EF95C32301A159E00B43C2A;
+			remoteInfo = Chess;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		1EF95C33301A159E00B43C2A /* Chess.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Chess.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1EF95C5B301F7D7600B43C2A /* ChessTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -16,10 +27,22 @@
 			path = Chess;
 			sourceTree = "<group>";
 		};
+		1EF95C5C301F7D7600B43C2A /* ChessTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = ChessTests;
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		1EF95C30301A159E00B43C2A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EF95C58301F7D7600B43C2A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -33,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				1EF95C35301A159E00B43C2A /* Chess */,
+				1EF95C5C301F7D7600B43C2A /* ChessTests */,
 				1EF95C34301A159E00B43C2A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -41,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				1EF95C33301A159E00B43C2A /* Chess.app */,
+				1EF95C5B301F7D7600B43C2A /* ChessTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +95,29 @@
 			productReference = 1EF95C33301A159E00B43C2A /* Chess.app */;
 			productType = "com.apple.product-type.application";
 		};
+		1EF95C5A301F7D7600B43C2A /* ChessTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1EF95C61301F7D7600B43C2A /* Build configuration list for PBXNativeTarget "ChessTests" */;
+			buildPhases = (
+				1EF95C57301F7D7600B43C2A /* Sources */,
+				1EF95C58301F7D7600B43C2A /* Frameworks */,
+				1EF95C59301F7D7600B43C2A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				1EF95C60301F7D7600B43C2A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				1EF95C5C301F7D7600B43C2A /* ChessTests */,
+			);
+			name = ChessTests;
+			packageProductDependencies = (
+			);
+			productName = ChessTests;
+			productReference = 1EF95C5B301F7D7600B43C2A /* ChessTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -82,6 +130,10 @@
 				TargetAttributes = {
 					1EF95C32301A159E00B43C2A = {
 						CreatedOnToolsVersion = 26.2;
+					};
+					1EF95C5A301F7D7600B43C2A = {
+						CreatedOnToolsVersion = 26.2;
+						TestTargetID = 1EF95C32301A159E00B43C2A;
 					};
 				};
 			};
@@ -100,12 +152,20 @@
 			projectRoot = "";
 			targets = (
 				1EF95C32301A159E00B43C2A /* Chess */,
+				1EF95C5A301F7D7600B43C2A /* ChessTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		1EF95C31301A159E00B43C2A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		1EF95C59301F7D7600B43C2A /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -122,7 +182,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		1EF95C57301F7D7600B43C2A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		1EF95C60301F7D7600B43C2A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 1EF95C32301A159E00B43C2A /* Chess */;
+			targetProxy = 1EF95C5F301F7D7600B43C2A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1EF95C3C301A15A000B43C2A /* Debug */ = {
@@ -310,6 +385,48 @@
 			};
 			name = Release;
 		};
+		1EF95C62301F7D7600B43C2A /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FJ7298UMY9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elyura.ChessTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chess.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Chess";
+			};
+			name = Debug;
+		};
+		1EF95C63301F7D7600B43C2A /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = FJ7298UMY9;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.elyura.ChessTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Chess.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Chess";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -327,6 +444,15 @@
 			buildConfigurations = (
 				1EF95C3F301A15A000B43C2A /* Debug */,
 				1EF95C40301A15A000B43C2A /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1EF95C61301F7D7600B43C2A /* Build configuration list for PBXNativeTarget "ChessTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1EF95C62301F7D7600B43C2A /* Debug */,
+				1EF95C63301F7D7600B43C2A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

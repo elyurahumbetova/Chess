@@ -32,7 +32,7 @@ class Bishop: Piece{
             var currentPosition = position
             
             while let nextPosition = currentPosition.offset(rowBy: direction.0, rankBy: direction.1){
-                if let targetPiece = board[position]{
+                if let targetPiece = board[nextPosition]{
                     if targetPiece.team != team{
                         moves.append(nextPosition)
                     }

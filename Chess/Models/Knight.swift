@@ -35,13 +35,13 @@ class Knight: Piece{
         
         for direction in directions {
             if let targetPosition = position.offset(rowBy: direction.0, rankBy: direction.1){
-                if let targetPiece = board[position]{
+                if let targetPiece = board[targetPosition]{
                     if targetPiece.team != team{
-                        moves.append(position)
+                        moves.append(targetPosition)
                     }
                 }
                 else{
-                    moves.append(position)
+                    moves.append(targetPosition)
                 }
             }
         }

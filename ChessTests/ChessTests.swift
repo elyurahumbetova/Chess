@@ -273,3 +273,122 @@ struct BishopTest{
         #expect(!moves.contains(Position(rank: .E, row: .four)))
     }
 }
+
+@MainActor
+struct QueenTests{
+    
+    @Test func queenOnEmptyBoardCanMoveEightDirection() async throws{
+        var board = Board()
+        let queen = Queen(team: .white)
+        let position = Position(rank: .D, row: .four)
+        board[position] = queen
+        let moves = queen.possibleMovements(from: position, board: board)
+        
+        #expect(moves.contains(Position(rank: .E, row: .five)))
+        #expect(moves.contains(Position(rank: .H, row: .eight)))
+        #expect(moves.contains(Position(rank: .G, row: .one)))
+        #expect(moves.contains(Position(rank: .C, row: .three)))
+        #expect(moves.contains(Position(rank: .D, row: .five)))
+        #expect(moves.contains(Position(rank: .D, row: .one)))
+        #expect(moves.contains(Position(rank: .E, row: .four)))
+        #expect(moves.contains(Position(rank: .A, row: .four)))
+        
+    }
+    @Test func quennCanNotMoveAsKnight() async throws{
+        var board = Board()
+        let queen = Queen(team: .white)
+        let position = Position(rank: .D, row: .four)
+        board[position] = queen
+        
+        let moves = queen.possibleMovements(from: position, board: board)
+        
+        #expect(!moves.contains(Position(rank: .E, row: .six)))
+
+    }
+    @Test func queenpCanCaptureEnemyPieceButNotBeyond() async throws{
+        var board = Board()
+        let queen = Queen(team: .white)
+        let position = Position(rank: .D, row: .four)
+        board[position] = queen
+        
+        let otherPiece = Bishop(team: .black)
+        let otherPosition = Position(rank: .D, row: .seven)
+        board[otherPosition] = otherPiece
+        
+        let moves = queen.possibleMovements(from: position, board: board)
+        
+        #expect(moves.contains(Position(rank: .D, row: .seven)))
+        #expect(!moves.contains(Position(rank: .D, row: .eight)))
+
+    }
+    @Test func queenStopsBeforeOwnPiece() async throws {
+        var board = Board()
+        let queen = Queen(team: .white)
+        let position = Position(rank: .D, row: .four)
+        board[position] = queen
+        
+        let ownPiece = Pawn(team: .white)
+        let piecePosition = Position(rank: .E, row: .five)
+        board[piecePosition] = ownPiece
+        
+        let moves = queen.possibleMovements(from: position, board: board)
+        #expect(!moves.contains(piecePosition))
+    }
+}
+@MainActor
+struct KingTests{
+    @Test func kingOnlyGoOneSquare() async throws{
+        var board = Board()
+        let king = King(team: .white)
+        let position = Position(rank: .D,row: .four)
+        board[position] = king
+        let moves = king.possibleMovements(from: position, board: board)
+        #expect(moves.contains(Position(rank: .D, row: .five)))
+        #expect(moves.contains(Position(rank: .E, row: .five)))
+        #expect(moves.contains(Position(rank: .C, row: .three)))
+        #expect(!moves.contains(Position(rank: .D, row: .six)))
+        #expect(moves.count == 8)
+
+    }
+    @Test func kingCanCaptureEnemyPiece() async throws{
+        var board = Board()
+        let king = King(team: .white)
+        let position = Position(rank: .D, row: .four)
+        board[position] = king
+        
+        let otherPiece = Bishop(team: .black)
+        let otherPosition = Position(rank: .D, row: .five)
+        board[otherPosition] = otherPiece
+        
+        let moves = king.possibleMovements(from: position, board: board)
+        
+        #expect(moves.contains(Position(rank: .D, row: .five)))
+        #expect(!moves.contains(Position(rank: .D, row: .eight)))
+
+    }
+    @Test func kingCanNotGoOwnPiecePosition() async throws{
+        var board = Board()
+        let king = King(team: .white)
+        let position = Position(rank: .D, row: .four)
+        board[position] = king
+        
+        let otherPiece = Bishop(team: .white)
+        let otherPosition = Position(rank: .D, row: .five)
+        board[otherPosition] = otherPiece
+        
+        let moves = king.possibleMovements(from: position, board: board)
+        
+        #expect(!moves.contains(Position(rank: .D, row: .five)))
+
+    }
+    @Test func kingInCornerHasThreeMoves() async throws{
+        var board = Board()
+        let king = King(team: .white)
+        let position = Position(rank: .A, row: .one)
+        board[position] = king
+        let moves = king.possibleMovements(from: position, board: board)
+        
+        #expect(moves.count == 3)
+        #expect(moves.contains(Position(rank: .A, row: .two)))
+    }
+}
